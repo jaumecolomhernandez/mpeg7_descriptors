@@ -1,18 +1,18 @@
-function photo = rgbtohmmd(path)
+function photo = rgb2hmmd(photo)
+%RGB2HMMD Realitza la cuantificació d'una matriu hmmd
+%   Itera la matriu de dades hmmd matrix i calcula el valor quantificat 
+%   TODO: Generalitzar a quasevol nombre de bins
+
     % Càrrega de la foto
-    rgb_photo = imread(path);
+    rgb_photo = photo;
 
     % Conversió a hmmd coma flotant
-    calculate = 1;
-    if calculate == 1
-        hmmd_matrix = rgb_hmmd(rgb_photo);  
-    end
+    hmmd_matrix = rgb_hmmd(rgb_photo);  
+  
 
     % Creació dels rangs de cuantificació
     % Per a cuantificar les dades s'utilitza les taules de
     % cuantificació del paper x pag y.
-
-    cuant_table = []; 
 
     sum_resol = [32,8,4,4,4];
     hue_resol = [1,4,16,16,16];
@@ -45,9 +45,6 @@ function photo = rgbtohmmd(path)
     % un array amb el primer valor del rang. El rang va desde el valor n
     % fins al n+1. Ex: Rang n [hue_rangs(n),hue_rangs(n+1))
     hue_step = 360.0./hue_resol;
-
-    % Pixel de treball per a cuantificar
-    % l'estructura és [diff, sum, hue]
 
     photo = hmmd_cuantifier_photo(hmmd_matrix,diff_ranges, sum_step, hue_step);
 

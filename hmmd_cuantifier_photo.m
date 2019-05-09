@@ -1,6 +1,8 @@
 function hmmd_cuant = hmmd_cuantifier_photo(hmmd_matrix, diff_ranges, sum_step, hue_step)
-%HMMD_CUANTIFIER_PHOTO Summary of this function goes here
-%   Detailed explanation goes here
+%HMMD_CUANTIFIER_PHOTO Realitza la cuantificació d'una matriu hmmd
+%   Itera la matriu de dades hmmd matrix i calcula el valor quantificat 
+%   TODO: Generalitzar a quasevol nombre de bins
+
     tamany = size(hmmd_matrix);
     hmmd_cuant = zeros(tamany(1),tamany(2));
 

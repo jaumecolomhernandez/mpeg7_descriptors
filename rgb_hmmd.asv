@@ -1,12 +1,13 @@
 function hmm_matrix = rgb_hmmd(rgb_photo)
-%RGB_HMMD Realitza la conversió d'una imatge RGB a imatge HMMD coma flotant
-%   Completar explicació
+%RGB_HMMD A
+%   Detailed explanation goes here
 
     tamany = size(rgb_photo);
     hmm_matrix = zeros(tamany(1),tamany(2),3);
     
     for i=1:tamany(1)
         for j=1:tamany(2)
+            
             % Convert data to array
             rgb_p = reshape(rgb_photo(i,j,:),[],1)';
             
