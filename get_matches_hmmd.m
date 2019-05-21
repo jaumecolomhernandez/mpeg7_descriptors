@@ -16,7 +16,7 @@ function sorted_values = get_matches_hmmd(photo_c,error,DistParameter,bins,histo
 n_files = size(histograma,1);
 %Convertim la foto a escala de grisos i calculem histograma
 photo_hmmd_c = rgb2hmmd(photo_c);
-histogram_c = imhist(photo_hmmd_c,bins).';
+histogram_c = hmmd_histogram(photo_hmmd_c).';
 %Calculem la distància a cada foto
 value = zeros(n_files(1),2);
 for i=1:n_files
@@ -31,6 +31,8 @@ for i=1:n_files
             value(i,:) = [i, pdist2(histogram_c,arr_comparar,@mult_metric)];
         case 'kolmogorov'
             value(i,:) = [i,kstest2(arr_comparar,histogram_c)];
+        case 'l1norm'
+            value(i,:) = [i,l1normdistance(histogram_c,arr_comparar)];
         case {'seuclidean','minkowski','mahalanobis'}
             value(i,:) = [i, pdist2(histogram_c,arr_comparar,error,DistParameter)];
         otherwise
